@@ -1,11 +1,12 @@
 // app.js — render raíz, login, navegación, shell de la app
 'use strict';
-
+// --- Mapeo de vistas de usuario ---
 const VIEWS = {
   hoy: TodayView, plan: PlanView, progreso: ProgressView,
   biblioteca: LibraryView, historial: HistoryView, reservas: ReservationsView,
   garaje: GarageView,
 };
+// --- Mapeo de vistas administrativas ---
 
 const ADMIN_VIEWS = {
   'admin-dashboard': 'renderDashboard',
@@ -63,7 +64,7 @@ function renderRoot() {
   else root.appendChild(renderShell(user));
   renderToast();
 }
-
+// --- Toast genérico ---
 function renderToast() {
   const existing = $('#toast'); if (existing) existing.remove();
   if (!state.ui.toast) return;
@@ -86,7 +87,7 @@ function renderAuth() {
   wrap.append(panel, content);
   return wrap;
 }
-
+// --- Formulario de login ---
 function loginForm() {
   const card = el('div', { class: 'auth-card' });
   card.appendChild(el('h1', {}, 'Inicia sesión'));
@@ -124,7 +125,7 @@ function loginForm() {
   ]));
   return card;
 }
-
+// --- Formulario de registro ---
 function registerForm() {
   const card = el('div', { class: 'auth-card' });
   card.appendChild(el('h1', {}, 'Crea tu cuenta'));
